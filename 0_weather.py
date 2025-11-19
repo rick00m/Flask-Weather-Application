@@ -3,7 +3,7 @@ import requests
 
 app = Flask(__name__)
 
-key = "d0a996d6caf95ca6c84f14a0c4bce795".strip()
+key = "HIDDEN API KEY".strip()
 
 @app.route("/", methods=["GET"])
 def home_get():
@@ -53,3 +53,4 @@ def weather_getpost():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
