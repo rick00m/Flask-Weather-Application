@@ -1,166 +1,178 @@
 <!DOCTYPE html>
-
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Weather Search — Bottom Footer</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
-<style>
-    html, body {
-        margin: 0;
-        height: 100%;
-        font-family: 'Montserrat', 'Segoe UI', Roboto, Helvetica, Arial, -apple-system, BlinkMacSystemFont, sans-serif;
-        color: #333;
-        overflow: hidden;
-    }
-
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: stretch;
-        position: relative;
-        background-image: url('/static/images/homepagebg.jpg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-
-    body::before {
-        content: "";
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background-color: rgba(255, 255, 255, 0.35);
-        z-index: 0;
-    }
-
-    
-    .container {
-        position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 5vh;
-        z-index: 1;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        pointer-events: none;
-    }
-
-    .bottom-panel {
-        pointer-events: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 14px;
-        max-width: 920px;
-        width: calc(100% - 40px);
-    }
-
-    form {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
-
-    form input[type="text"] {
-        width: 560px;
-        max-width: 100%;
-        padding: 14px 18px;
-        font-size: 18px;
-        border: none;
-        border-radius: 12px;
-        outline: none;
-        background: linear-gradient(145deg, #FCE0BC, #FFE6D1);
-        box-shadow:
-            inset 0 2px 5px rgba(0,0,0,0.06),
-            0 6px 15px rgba(0,0,0,0.12);
-        color: #333;
-        transition: all 0.25s ease;
-        text-align: center;
-    }
-
-    form input[type="text"]:focus {
-        box-shadow:
-            inset 0 2px 6px rgba(0,0,0,0.12),
-            0 10px 30px rgba(0,0,0,0.18);
-        background: linear-gradient(145deg, #FFE0B3, #FFEDD9);
-    }
-
-    .locations {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 4px;
-    }
-
-    .location-box {
-        padding: 10px 16px;
-        border-radius: 12px;
-        background: linear-gradient(145deg, #FCE0BC, #FFE6D1);
-        box-shadow:
-            inset 0 2px 5px rgba(0,0,0,0.06),
-            0 6px 15px rgba(0,0,0,0.12);
-        font-weight: 500;
-        cursor: pointer;
-        transition: transform 0.12s ease, box-shadow 0.12s ease;
-        user-select: none;
-    }
-
-    .location-box:active {
-        transform: translateY(1px);
-    }
-
-    .location-box:hover {
-        box-shadow:
-            inset 0 3px 6px rgba(0,0,0,0.08),
-            0 10px 22px rgba(0,0,0,0.14);
-        background: linear-gradient(145deg, #FFE0B3, #FFEDD9);
-    }
-
-    .error {
-        color: red;
-        margin-top: 8px;
-        font-weight: 500;
-    }
-
-    @media (max-width: 640px) {
-        form input[type="text"] { font-size: 16px; padding: 12px 14px; }
-        .location-box { padding: 8px 12px; font-size: 14px; }
-        .container { bottom: 4vh; }
-    }
-</style>
-
-</head>
-<body>
-    <div class="container">
-        <div class="bottom-panel">
+   <head>
+      <meta charset="UTF-8">
+      <title>Weather Search — Bottom Footer</title>
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+      <style>
+         html, body {
+         margin: 0;
+         height: 100%;
+         font-family: 'Montserrat', 'Segoe UI', Roboto, Helvetica, Arial, -apple-system, BlinkMacSystemFont, sans-serif;
+         color: #333;
+         overflow: hidden;
+         }
+         body {
+         display: flex;
+         justify-content: center;
+         align-items: stretch;
+         position: relative;
+         background-image: url('/static/images/homepagebg.jpg');
+         background-size: cover;
+         background-position: center;
+         background-repeat: no-repeat;
+         }
+         body::before {
+         content: "";
+         position: absolute;
+         top: 0; left: 0; right: 0; bottom: 0;
+         background-color: rgba(255, 255, 255, 0.35);
+         z-index: 0;
+         }
+         .weather-box {
+         position: absolute;
+         top: 20px;
+         padding: var(--weather-box-padding);
+         border-radius: 12px;
+         background: var(--panel-bg);
+         box-shadow: var(--panel-shadow-inset), var(--panel-shadow);
+         display: flex;
+         align-items: center;
+         justify-content: flex-start;
+         gap: 16px;
+         font-weight: 600;
+         z-index: 3;
+         min-width: 240px;
+         max-width: 300px;
+         height: 70px;
+         }
+         #weather-dublin { left: 20px; }
+         #weather-sydney { right: 20px; }
+         .weather-box img {
+         width: 40px;
+         height: 40px;
+         }
+         .container {
+         position: fixed;
+         left: 0;
+         right: 0;
+         bottom: 5vh;
+         z-index: 1;
+         text-align: center;
+         display: flex;
+         justify-content: center;
+         pointer-events: none;
+         }
+         .bottom-panel {
+         pointer-events: auto;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         gap: 14px;
+         max-width: 920px;
+         width: calc(100% - 40px);
+         }
+         form {
+         width: 100%;
+         display: flex;
+         justify-content: center;
+         }
+         form input[type="text"] {
+         width: 560px;
+         max-width: 100%;
+         padding: 14px 18px;
+         font-size: 18px;
+         border: none;
+         border-radius: 12px;
+         outline: none;
+         background: linear-gradient(145deg, #FCE0BC, #FFE6D1);
+         box-shadow:
+         inset 0 2px 5px rgba(0,0,0,0.06),
+         0 6px 15px rgba(0,0,0,0.12);
+         color: #333;
+         text-align: center;
+         transition: all 0.25s ease;
+         }
+         .locations {
+         display: flex;
+         justify-content: center;
+         flex-wrap: wrap;
+         gap: 12px;
+         margin-top: 4px;
+         }
+         .location-box {
+         padding: 10px 16px;
+         border-radius: 12px;
+         background: linear-gradient(145deg, #FCE0BC, #FFE6D1);
+         box-shadow:
+         inset 0 2px 5px rgba(0,0,0,0.06),
+         0 6px 15px rgba(0,0,0,0.12);
+         font-weight: 500;
+         cursor: pointer;
+         user-select: none;
+         transition: 0.12s ease;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="weather-dublin" class="weather-box">Loading...</div>
+      <div id="weather-sydney" class="weather-box">Loading...</div>
+      <div class="container">
+         <div class="bottom-panel">
             <form method="POST" action="/weather" id="search-form">
-                <input type="text" name="location" placeholder="" required>
+               <input type="text" name="location" placeholder="" required>
             </form>
-
             <div class="locations">
-                <div class="location-box" onclick="selectLocation('New York')">New York</div>
-                <div class="location-box" onclick="selectLocation('London')">London</div>
-                <div class="location-box" onclick="selectLocation('Tokyo')">Tokyo</div>
-                <div class="location-box" onclick="selectLocation('Paris')">Paris</div>
-                <div class="location-box" onclick="selectLocation('Sydney')">Sydney</div>
+               <div class="location-box" onclick="selectLocation('New York')">New York</div>
+               <div class="location-box" onclick="selectLocation('London')">London</div>
+               <div class="location-box" onclick="selectLocation('Tokyo')">Tokyo</div>
+               <div class="location-box" onclick="selectLocation('Paris')">Paris</div>
+               <div class="location-box" onclick="selectLocation('Sydney')">Sydney</div>
             </div>
-
-            {% if error %}
-                <div class="error">{{ error }}</div>
-            {% endif %}
-        </div>
-    </div>
-
-<script>
-    function selectLocation(city) {
-        const input = document.querySelector('input[name="location"]');
-        input.value = city;
-        document.getElementById('search-form').submit();
-    }
-</script>
-
-</body>
+         </div>
+      </div>
+      <script>
+         function selectLocation(city) {
+             const input = document.querySelector('input[name="location"]');
+             input.value = city;
+             document.getElementById('search-form').submit();
+         }
+      </script>
+      <script> 
+         async function loadWeather(city, elementId) {
+             const el = document.getElementById(elementId);
+             el.textContent = 'Loading...';
+             try {
+                 const res = await fetch(`/api/weather/${encodeURIComponent(city)}`);
+                 if (!res.ok) {
+                     el.textContent = `${city}: unavailable`;
+                     return;
+                 }
+                 const data = await res.json();
+                 if ((data.cod && Number(data.cod) !== 200) || !data.main) {
+                     el.textContent = `${city}: unavailable`;
+                     return;
+                 }
+                 const icon = data.weather?.[0]?.icon || '';
+                 const desc = data.weather?.[0]?.main || '';
+                 const temp = (data.main && typeof data.main.temp !== 'undefined') ? Math.round(data.main.temp) : 'N/A';
+                 el.innerHTML = `
+                     <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="${desc} icon">
+                     <div>
+                         <div style="font-weight:700;">${city}</div>
+                         <div style="font-size:14px">${temp}°C <span style="opacity:.85">(${desc})</span></div>
+                     </div>
+                 `;
+             } catch (err) {
+                 console.error('Weather fetch error for', city, err);
+                 el.textContent = `${city}: unavailable`;
+             }
+         }
+         
+         window.addEventListener('DOMContentLoaded', () => {
+             loadWeather('Dublin', 'weather-dublin');
+             loadWeather('Sydney', 'weather-sydney');
+         });
+      </script>
+   </body>
 </html>
